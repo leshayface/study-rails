@@ -1,0 +1,38 @@
+<% content_for :page_title do %>
+  <%  "Games - Watch gameplay of #{@game.title} played by sSs members" %>
+<% end %>
+
+<div class="container push-top">
+  <div class="row push-top-bottom ">
+
+
+    <div class="col-sm-4">
+
+      <div class="jumbotron">
+        <div class="">
+          <p class="text-muted">
+            Game:
+          </p>
+          <h2><%= @game.title %></h2>
+          <%= image_tag(@game.image, class: "img-responsive")%>
+
+        </div>
+
+      </div>
+    </div>
+
+
+
+    <div class="col-sm-8">
+      <div class="light-well">
+
+        <%= render partial: "gameplays/gameplay", collection: @gameplays %>
+        <%= will_paginate @gameplays %>
+
+      </div>
+    </div>
+
+
+
+  </div>
+</div>

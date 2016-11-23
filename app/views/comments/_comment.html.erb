@@ -1,0 +1,19 @@
+<li class="well well-lg" style="list-style-type: none;margin:1em">
+  <p>
+    <%= comment.body %> -
+  </p>
+  <small>Submitted <%= time_ago_in_words(comment.created_at) %> ago by <%= link_to Member.find(comment.member_id).psn_gamertag, member_path(Member.find(comment.member_id))%></small>
+
+  <%= simple_form_for [comment, Comment.new] do |f| %>
+
+
+      <%= f.input :body, placeholder: "Add a Reply", label: false %><br/>
+      <%= f.submit "Reply", class: 'btn btn-sm'  %>
+      <% end %>
+
+
+  <ul>
+      <%= render partial: 'comments/comment', collection: comment.comments %>
+  </ul>
+
+</li>

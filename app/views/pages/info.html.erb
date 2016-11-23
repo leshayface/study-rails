@@ -1,0 +1,109 @@
+<% content_for :page_title do %>
+  <%  "Info Page - How the site works" %>
+<% end %>
+
+
+<div class="row">
+
+  <div class="col-sm-12 main-container " >
+    <h1>Posting Video Gameplay</h1>
+    <p>
+      You can use the built in video sharing features of playstation to make a video from the last
+      15 minutes of gameplay, which you can then save to your capture gallery, trim and upload to YouTube.
+      <strong>You will need to setup video sharing and link your Youtube account to PlayStation</strong>
+    </p>
+    <h2>Setting up PlayStation Video sharing</h2>
+    <p>
+      Go to "Sharing and Broadcasts" from the settings menu in PlayStation.
+      <ol>
+          <li>Ensure length of video clip is set to 15mins</li>
+        <li>In the "Audio Sharing Settings" ensure that the "Include microphone audio in Video Clips" is unchecked -
+          otherwise your party chat and voice will be included in video.
+        </li>
+        <li>In the "Link with Other Services" menu, you will be able to link your YouTube account here.</li>
+      </ol>
+    </p>
+    <h3>How to Post Video from Youtube</h3>
+    <div class="row">
+
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <%= image_tag('help/video-step-1.PNG', class: 'img-responsive')%>
+          <div class="caption">
+            <h3>Step 1</h3>
+            <p>
+              Sign in to the sSs Website
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <%= image_tag('help/video-step-2.PNG', class: 'img-responsive')%>
+          <div class="caption">
+            <h3>Step 2</h3>
+            <p>
+              Click on "Post New Gameplay"
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <%= image_tag('help/video-step-6.PNG', class: 'img-responsive')%>
+          <div class="caption">
+            <h3>Step 3</h3>
+            <p>
+              Enter a title, the link to the youtube video and select from the drop down the game.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <%= image_tag('help/video-step-4.PNG', class: 'img-responsive')%>
+          <div class="caption">
+            <h3>Step 3 (Getting link from YouTube App)</h3>
+            <p>
+                Go to "your account tab" and select "My Videos"
+             </p>
+          </div>
+        </div>
+      </div>
+
+
+        <div class="col-sm-6 col-md-4">
+          <div class="thumbnail">
+            <%= image_tag('help/video-step-5.PNG', class: 'img-responsive')%>
+            <div class="caption">
+              <h3>Step 3 (Getting link from YouTube App)</h3>
+              <p>
+                  Open the video you want to post and use the "share" option in the Youtube app to "Copy Link"
+               </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-md-4">
+          <div class="thumbnail">
+            <%= image_tag('help/video-step-7.PNG', class: 'img-responsive')%>
+            <div class="caption">
+              <h3>Complete!</h3>
+              <p>
+                  If everything was done correct, you will get a success notification
+               </p>
+            </div>
+          </div>
+        </div>
+
+    </div>
+    <h1>Posting Images</h1>
+    <p>
+      You will need an account on imgur <a target="_blank" href="http://imgur.com/">http://imgur.com/</a> to be able to post images.
+      Imgur is a free image sharing site which also has mobile apps to make it easy. This website does not store images or videos to mitagate the cost of storage :)
+    </p>
+  </div>
+</div>

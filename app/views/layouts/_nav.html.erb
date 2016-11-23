@@ -1,0 +1,47 @@
+<header>
+  <div class="navbar-wrapper">
+    <div class="container-fluid no-padding">
+
+      <nav class="navbar navbar-inverse navbar-static-top">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">sSs Clan</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="/about">About sSs Clan</a></li>
+              <li>
+                <%= link_to "Games We Play", games_path %>
+              </li>
+              <li>
+                <%= link_to "Members of sSs", members_path %>
+              </li>
+              <% if !current_member %>
+                <li>
+                  <%= link_to "Members Sign In", new_member_session_path %>
+                </li>
+                <% else %>
+                  <li>
+                    <%= link_to  current_member.psn_gamertag , member_path(current_member) %>
+                  </li>
+
+          <li>
+                    <%= link_to  "Sign Out" , destroy_member_session_path, method: :delete %>
+                  </li>
+
+
+                  <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+    </div>
+  </div>
+</header>

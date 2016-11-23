@@ -1,0 +1,13 @@
+<%= simple_form_for(@gameplay) do |f| %>
+<%= f.error_notification %>
+
+<div class="form-inputs">
+<%= f.input :title, required: true  %>
+<%= f.input :link, required: true, placeholder: "Either a youtube video link or Imgur link"  %>
+<%= f.association :game , include_blank: true, required: true%>
+
+</div>
+<div class="form-actions">
+  <%= f.button :submit, "Post", class: 'btn btn-primary btn-block' %>
+</div>
+<% end %>

@@ -1,0 +1,92 @@
+@import "bootstrap-sprockets";
+@import "_variables";
+@import "bootstrap";
+@import "_helpers";
+
+
+
+header {
+  width: 100%;
+  background: asset-url(logo);
+  height: 42%;
+  background-position: center center fixed;
+  background-color: black;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.simple-header {
+  background: none !important;
+  height: auto !important;
+  nav {
+    margin-bottom: 0;
+  }
+}
+footer {
+  padding: 32px 16px;
+  color: #9e9e9e;
+  background-color: #424242;
+}
+.main-container {
+  margin-top: -7%;
+  background: white;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  min-height: 100%;
+}
+.navbar-inverse {
+  background-color: rgba(0,0,0,0.5);
+  border-color: transparent;
+}
+
+.navbar-nav > li > a {
+  color: white;
+  padding: 2em 1em;
+}
+.navbar-brand {
+  color: white;
+  font-size: 2em;
+  padding-top: 0.6em;
+}
+a {
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.featurette-heading {
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+.alert-info {
+  z-index: 99999;
+position: absolute;
+top: 6em;
+width: 90%;
+  ul {
+    list-style-type: none;
+  }
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px; height: 0; overflow: hidden;
+}
+
+.video-container iframe,
+.video-container object,
+.video-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+@media (max-width: 768px) {
+  .main-container {
+    margin-top: 0 !important;
+  }
+}

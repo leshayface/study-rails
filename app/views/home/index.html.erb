@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col-sm-4">
+      <h2>Welcome to the official sSs Clan website</h2>
+      <p class="lead">
+        Learn more about the sSs clan over <%= link_to "here", '/about'%>. You can also check out our <%= link_to 'members', members_path %> as well as gameplay of the games we play over <%= link_to 'here', games_path %>.
+      </p>
+  </div>
+
+  <div class="col-sm-8 main-container " >
+    <% @features.each_with_index do |f,i| %>
+
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading"><%= link_to f.title, gameplay_path(f) %></h2>
+        <p class="lead">Posted on <%= f.created_at.strftime("%b %d, %Y")%> by <%= link_to f.member.psn_gamertag, member_path(f.member)%>. </p>
+        <%= link_to "View Gameplay", gameplay_path(f), class: 'btn btn-primary '%>
+        <br>
+      </div>
+      <div class="col-md-5 text-center">
+
+        <% if f.is_image %>
+        <a href="<%= gameplay_path(f) %>" class="thumbnail">
+          <img class="img-responsive" src="<%= f.link %>" />
+        </a>
+        <% end %>
+
+        <% if f.is_youtube %>
+        <a href="<%= gameplay_path(f) %>" class="thumbnail">
+          <span class="glyphicon glyphicon-play large-icon-size" aria-hidden="true"></span>
+          </a>
+        <% end %>
+
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <% end %>
+  </div>
+</div>

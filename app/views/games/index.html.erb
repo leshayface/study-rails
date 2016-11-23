@@ -1,0 +1,38 @@
+<% content_for :page_title do %>
+  <%  "Games - #{@games.map {|n| n.title }.to_s }" %>
+<% end %>
+<div class="row">
+  <div class="col-sm-4">
+      <h1>Games</h1>
+      <p class="lead">
+        These are games we play individually and as a clan.
+      </p>
+  </div>
+
+  <div class="col-sm-8 main-container " >
+
+    <% @games.each do |game| %>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="jumbotron clearfix">
+          <div class="col-sm-3">
+            <img src="<%= game.image %>" class="img-responsive" />
+          </div>
+
+          <div class="col-sm-9">
+            <h3><%= game.title %></h3>
+            <p><a href="<%= game.website %>" target="_blank"><%= game.website %></a></p>
+            <!-- <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p> -->
+          </div>
+          <hr>
+          <p class="text-right"><a class="btn btn-primary btn-lg" href="/games/<%= game.slug %>" role="button">View sSs Gameplay</a></p>
+
+        </div>
+      </div>
+    </div>
+
+    <% end %>
+
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <p class="text-muted">
+      Posted on: <%= gameplay.created_at.strftime("%b %d, %Y")%>
+    </p>
+    <h1>  <%= link_to gameplay.title, gameplay_path(gameplay) %></h1>
+    <hr>
+    <div class="row">
+      <div class="col-sm-12 text-right">
+        <%= link_to "View", gameplay_path(gameplay), class: 'btn btn-primary btn-lg' %>
+      </div>
+    </div>
+  </div>
+</div>

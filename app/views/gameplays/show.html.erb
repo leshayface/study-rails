@@ -1,0 +1,69 @@
+<% content_for :page_title do %>
+  <%  "Gameplay - #{@gameplay.title} by #{@gameplay.member.psn_gamertag}" %>
+<% end %>
+
+<div class="row">
+
+  <div class="col-sm-8 main-container " >
+    <% if @gameplay.is_image %>
+        <img class="img-responsive" src="<%= @gameplay.link %>" />
+    <% end %>
+
+    <% if @gameplay.is_youtube %>
+    <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= @gameplay.youtube_video_id_from_link%>" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <% end %>
+  </div>
+
+  <div class="col-sm-4">
+      <h1><%=  @gameplay.title %></h1>
+      <p class="lead">
+          Posted on: <%= @gameplay.created_at.strftime("%b %d, %Y")%> by <%= link_to @gameplay.member.psn_gamertag, member_path(@gameplay.member)%>
+      </p>
+      <% if current_member %>
+        <% if current_member.id == @gameplay.member_id %>
+          <p>
+          <%= link_to "Edit Gameplay", edit_gameplay_path(@gameplay) %> |
+          <%= link_to 'Destroy Gameplay',  @gameplay,  method: :delete, data: { confirm: 'Are you sure?' } %>
+        </p>
+        <% end %>
+      <% end %>
+      <div class="light-well">
+        <h5><%= @gameplay.game.title %></h5>
+        <% image_tag(@gameplay.game.image, class: "img-responsive")%>
+        <%= link_to "View more Gameplay", game_path(@gameplay.game)%>
+
+      </div>
+
+
+
+
+
+  </div>
+
+
+</div>
+
+<% if member_signed_in? %>
+<div class="row">
+  <div class="col-sm-12">
+
+    <hr>
+    <h4>Comments</h4>
+    <%= simple_form_for [@gameplay, Comment.new] do |f| %>
+        <%= f.input :body, placeholder: "Add a Reply", label: false %><br/>
+        <%= f.submit "Reply", class: 'btn btn-primary btn-block'  %>
+        <% end %>
+    <ul>
+        <%= render(partial: 'comments/comment', collection: @gameplay.comments) %>
+
+
+
+
+    </ul>
+
+
+  </div>
+</div>
+<% end %>

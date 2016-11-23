@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html class="full-height" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="The sSs Clan SA brings a new aspect of clan gaming to the Battlefield/Call of duty/Rainbow 6">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>sSs Clan - <%= content_for?(:page_title) ? yield(:page_title) : "Gaming Battlefield & Call of Duty & Rainbow 6" %></title>
+    <%= csrf_meta_tags %>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body class="full-height">
+    <header class="<%= content_for?(:header_class) ? yield(:header_class) : "" %>">
+      <%= render 'layouts/nav'%>
+    </header>
+    <div class=" container push-bottom">
+
+        <% flash.each do |key, value| %>
+          <div class="alert alert-info">
+            <a href="#" data-dismiss="alert" class="close">×</a>
+              <ul>
+                <li>
+                  <%= value %>
+                </li>
+              </ul>
+          </div>
+        <% end %>
+
+        <%= yield %>
+    </div>
+
+    <footer >
+      <div class="container">
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>&copy; <%= Time.now.year %> sSs Clan.</p>
+        <div class="row">
+          <div class="col-sm-12 text-center">
+              <p>
+                Built with all the love in the world by <a href="linkedin.com/in/eshaam" target="_blank">@eshaam</a>.
+              </p>
+              <p>
+
+              </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <% if Rails.env == 'production' %>
+      <%= raw(Setting.read(name: "google_analytics")) %>
+    <% end %>
+
+
+  </body>
+</html>

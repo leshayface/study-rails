@@ -1,0 +1,112 @@
+<% content_for :page_title do %>
+  <%  "Members - View profile and gameplay from sSs member: #{@member.psn_gamertag}" %>
+<% end %>
+
+
+<div class="container push-top main-container">
+  <div class="row push-top-bottom ">
+
+
+    <div class="col-sm-12 col-md-4">
+
+      <% if member_signed_in? %>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="light-well">
+
+              <%= link_to "Post New Gameplay", new_gameplay_path , class: 'btn btn-primary btn-block'%>
+
+            </div>
+          </div>
+        </div>
+
+      <% end %>
+
+
+      <div class="jumbotron">
+        <div class="">
+          <p class="text-muted">
+            sSs Member:
+          </p>
+          <h2><%= @member.psn_gamertag %></h2>
+          <p class="text-muted">
+            Location:
+          </p>
+          <h4><%= @member.location %></h4>
+
+          <p class="text-muted">
+            Date Joined:
+          </p>
+          <h4><%= @member.date_joined %></h4>
+
+
+          <p class="text-muted">
+            Bio:
+          </p>
+          <h4><%= @member.bio %></h4>
+
+        </div>
+        <div class="">
+          <% if member_signed_in?  %>
+            <% if @member.id == current_member.id %>
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="light-well">
+
+                  <%= link_to "Edit Profile", edit_member_path(current_member) , class: 'btn btn-info btn-block'%>
+
+                </div>
+              </div>
+            </div>
+              <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="col-sm-12 col-md-8">
+      <% if member_signed_in?  %>
+      <div class="light-well">
+        <h3>Recent Posts from sSs Members</h3>
+
+        <div class="list-group">
+          <%   @recent_gameplays.each do |g|  %>
+          <a href="<%= gameplay_path(g) %>" class="list-group-item"><%= g.title %> by <%= g.member.psn_gamertag%> - <%= time_ago_in_words(g.created_at)  %> ago</a>
+          <% end %>
+        </div>
+      </div>
+      <hr>
+      <% end %>
+
+      <% if member_signed_in?  %>
+      <div class="light-well">
+        <h3>Recent Comments from sSs Members</h3>
+        <div class="list-group">
+          <%   @recent_comments.each do |c|  %>
+          <a href="<%= gameplay_path(Gameplay.find(c.commentable_id)) %>" class="list-group-item ">
+            <h4 class="list-group-item-heading"><%= c.member.psn_gamertag %> commented on <%= Gameplay.find(c.commentable_id).title %></h4>
+            <p class="list-group-item-text"><%= c.body %></p>
+          </a>
+      <% end %>
+  </div>
+      </div>
+      <hr>
+      <% end %>
+
+
+
+      <div class="light-well">
+          <h3>My Gameplays</h3>
+        <%= render partial: "gameplays/gameplay", collection: @gameplays %>
+        <%= will_paginate @gameplays %>
+
+      </div>
+    </div>
+
+
+
+  </div>
+</div>
